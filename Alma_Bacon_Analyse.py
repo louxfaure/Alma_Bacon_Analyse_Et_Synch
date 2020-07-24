@@ -92,7 +92,7 @@ while offset < pf_number:
 lf.close()
 rf.close()
 print("{} - {} - {}".format(os.getenv("SFTP_UB_HOSTNAME"),os.getenv("SFTP_UB_LOGIN"),os.getenv("SFTP_UB_PW")))
-with pysftp.Connection(host=os.getenv("SFTP_UB_HOSTNAME"), username=os.getenv("SFTP_UB_LOGIN"), password=os.getenv("SFTP_UB_PW"))
+with pysftp.Connection(host=os.getenv("SFTP_UB_HOSTNAME"), username=os.getenv("SFTP_UB_LOGIN"), password=os.getenv("SFTP_UB_PW")):
 print() as sftp:
     print("Connection succesfully stablished ... ")
     localFilePath = LOADER_FILE
