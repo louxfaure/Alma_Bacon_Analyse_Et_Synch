@@ -1,0 +1,9 @@
+[submodule "Alma_Apis_Interface"]
+	path = Alma_Apis_Interface
+	url = https://github.com/louxfaure/Alma_Apis_Interface.git
+[submodule "Abes_Apis_Interface"]
+	path = Abes_Apis_Interface
+	url = https://github.com/louxfaure/Abes_Apis_Interface
+[submodule "Isbns"]
+	path = Isbns
+	url = https://github.com/louxfaure/Isbns.git
