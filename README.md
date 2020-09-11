@@ -10,6 +10,12 @@ S'il y a PPN il créé une ligne dans un TSV avec le MMSID de la notice et le PP
 ### Avoir configuré un ftp.
 
 ### Avoir configuré un profil de chargement 
+<<<<<<< HEAD
 ![](Import Profile Details.png)
 
 ![](Import Profile Details2.png)
+=======
+![](./Media/Import Profile Details.png)
+
+![](Media/Import Profile Details(1).png)
+>>>>>>> 0e30a62993184f4f0a57ced788a9be7fd59a874f
