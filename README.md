@@ -13,3 +13,8 @@ S'il y a PPN il créé une ligne dans un TSV avec le MMSID de la notice et le PP
 ![](Media/Profile_Details.png)
 
 ![](Media/Match_Profile.png)
+
+### Paramètres
+  - Identifiant de la colection électronique à traiter (Les bouquets doivent être activés dans l'institution)
+  - Identifaint du job d'import [Working with the Alma Jobs API](https://developers.exlibrisgroup.com/blog/Working-with-the-Alma-Jobs-API/)
+  - Clef d'API avec droits d'écriture dans les domaines Configuration and Administration et Electronic Resources
