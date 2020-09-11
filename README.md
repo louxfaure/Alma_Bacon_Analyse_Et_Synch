@@ -8,5 +8,8 @@ S'il y a PPN il créé une ligne dans un TSV avec le MMSID de la notice et le PP
 
 ## Pré-requis Alma
 ### Avoir configuré un ftp.
-### Avoir configuré un profil de chargement 
 
+### Avoir configuré un profil de chargement 
+![](Media/Import Profile Details.png)
+
+![](Media/Import Profile Details(1).png)
