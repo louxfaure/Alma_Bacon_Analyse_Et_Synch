@@ -27,8 +27,10 @@ class Portfolio(object):
             record_xml = ET.fromstring(record)
             self.record_ids = self.get_identifiers(record_xml)
             self.title = record_xml.find('title').text
-            self.publisher = record_xml.find('publisher_const').text
-            self.date_of_publication = record_xml.find('date_of_publication').text
+            if (record_xml.find('publisher_const')) :
+                self.publisher = record_xml.find('publisher_const').text
+            if (record_xml.find('date_of_publication')) :
+                self.date_of_publication = record_xml.find('date_of_publication').text
             self.originating_system_id = record_xml.find('originating_system_id').text
 
 
@@ -70,7 +72,7 @@ class Portfolio(object):
         return record_ids_dict
 
     def get_nz_mms_id(self):
-        sru = Alma_Sru.AlmaSru(service=self.service)
+        sru = Alma_Sru.AlmaSru(service=self.service, instance='Test')
         return sru.originatingSystemIdToMmsid(self.originating_system_id)
         
 

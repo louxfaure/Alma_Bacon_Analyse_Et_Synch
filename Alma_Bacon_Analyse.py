@@ -11,17 +11,22 @@ import Portfolio
 import urllib.request
 import pysftp
 
-API_KEY = os.getenv("TEST_UB_API")
+API_KEY = os.getenv("TEST_NETWORK_API")
 NZ_API_KEY = os.getenv("TEST_NETWORK_API")
 
-ECOLLECTION_ID = '61154857880004672'
-ESERVICE_ID = '62154857870004672'
-BACON_PACKAGE = 'CAIRN_GLOBAL_OUVRAGES-EDUCATION'
+# ECOLLECTION_ID = '61154857880004672'
+# ESERVICE_ID = '62154857870004672'
+# BACON_PACKAGE = 'CAIRN_GLOBAL_OUVRAGES-EDUCATION'
+
+ECOLLECTION_ID = '6198824990004671'
+ESERVICE_ID = '6298824980004671'
+BACON_PACKAGE = 'EUROPRESSE_GLOBAL_BIBESR'
 
 REPORT_FILE = "/media/sf_Partage_LouxBox/{}_rapport.csv".format(BACON_PACKAGE)
 LOADER_FILE = "/media/sf_Partage_LouxBox/{}_loader.tsv".format(BACON_PACKAGE)
 
-IMPORT_JOB_ID = "S5952781050004671"
+IMPORT = "NO"
+IMPORT_JOB_ID = "S7110508790004671"
 
 
 api = Alma_Apis_Ecollections.AlmaERecords(apikey=API_KEY, region='EU', service='Bacon_Alma_Analysis')
@@ -91,16 +96,15 @@ while offset < pf_number:
 
 lf.close()
 rf.close()
-print("{} - {} - {}".format(os.getenv("SFTP_UB_HOSTNAME"),os.getenv("SFTP_UB_LOGIN"),os.getenv("SFTP_UB_PW")))
-with pysftp.Connection(host=os.getenv("SFTP_UB_HOSTNAME"), username=os.getenv("SFTP_UB_LOGIN"), password=os.getenv("SFTP_UB_PW")):
-print() as sftp:
-    print("Connection succesfully stablished ... ")
-    localFilePath = LOADER_FILE
-    # Define the remote path where the file will be uploaded
-    remoteFilePath = '/DEPOT/NOTICES_MARC21/{}_loader.tsv'.format(BACON_PACKAGE)
-    sftp.put(localFilePath, remoteFilePath)
+if IMPORT == "YES" :
+    with pysftp.Connection(host=os.getenv("SFTP_UB_HOSTNAME"), username=os.getenv("SFTP_UB_LOGIN"), password=os.getenv("SFTP_UB_PW")) as sftp:
+        print("Connection succesfully stablished ... ")
+        localFilePath = LOADER_FILE
+        # Define the remote path where the file will be uploaded
+        remoteFilePath = '/DEPOT/NOTICES_MARC21/{}_loader.tsv'.format(BACON_PACKAGE)
+        sftp.put(localFilePath, remoteFilePath)
 
-job_api = Alma_Apis.Alma(apikey=NZ_API_KEY, region='EU', service='Bacon_Alma_Analysis')
-job_api.post_job_without_data(IMPORT_JOB_ID)
+    job_api = Alma_Apis.Alma(apikey=NZ_API_KEY, region='EU', service='Bacon_Alma_Analysis')
+    job_api.post_job_without_data(IMPORT_JOB_ID)
 
 
